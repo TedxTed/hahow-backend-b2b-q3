@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Demo
 
-Things you may want to cover:
+[demo endpoint](https://hahow-backend-b2b-q3.fly.dev/)
 
-* Ruby version
 
-* System dependencies
+## Deployment
 
-* Configuration
+deploy this project to fly.io
 
-* Database creation
+```bash
+  fly deploy
+```
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

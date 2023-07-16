@@ -48,3 +48,5 @@ end
 group :development do
   gem 'rspec-rails', '~> 6.0.0'
 end
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
