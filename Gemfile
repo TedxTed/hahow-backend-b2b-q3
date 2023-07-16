@@ -47,6 +47,8 @@ end
 
 group :development do
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'faker', '~> 3.2'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
