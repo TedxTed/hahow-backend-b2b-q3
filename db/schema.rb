@@ -10,41 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_17_125631) do
+ActiveRecord::Schema[7.0].define(version: 20_230_717_125_631) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "chapters", force: :cascade do |t|
-    t.string "chapter_name", null: false
-    t.bigint "course_id", null: false
-    t.string "identifier"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_chapters_on_course_id"
+  create_table 'chapters', force: :cascade do |t|
+    t.string 'chapter_name', null: false
+    t.bigint 'course_id', null: false
+    t.string 'identifier'
+    t.integer 'position'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['course_id'], name: 'index_chapters_on_course_id'
   end
 
-  create_table "courses", force: :cascade do |t|
-    t.string "course_name", null: false
-    t.string "instructor_name", null: false
-    t.string "course_description", null: false
-    t.string "identifier"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'courses', force: :cascade do |t|
+    t.string 'course_name', null: false
+    t.string 'instructor_name', null: false
+    t.string 'course_description', null: false
+    t.string 'identifier'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "units", force: :cascade do |t|
-    t.string "unit_name"
-    t.string "unit_description"
-    t.string "unit_content"
-    t.string "identifier"
-    t.integer "position"
-    t.bigint "chapter_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chapter_id"], name: "index_units_on_chapter_id"
+  create_table 'units', force: :cascade do |t|
+    t.string 'unit_name'
+    t.string 'unit_description'
+    t.string 'unit_content'
+    t.string 'identifier'
+    t.integer 'position'
+    t.bigint 'chapter_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['chapter_id'], name: 'index_units_on_chapter_id'
   end
 
-  add_foreign_key "chapters", "courses"
-  add_foreign_key "units", "chapters"
+  add_foreign_key 'chapters', 'courses'
+  add_foreign_key 'units', 'chapters'
 end
