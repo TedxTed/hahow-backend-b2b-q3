@@ -20,19 +20,12 @@ module V1
         end
 
         post do
-          course_info = params[:course_info]
-          course_info[:course_id] = SecureRandom.hex(8)
-
-          course_info[:chapters].each do |chapter|
-            chapter[:chapter_id] = SecureRandom.hex(8)
-            next unless chapter[:units]
-
-            chapter[:units].each do |unit|
-              unit[:unit_id] = SecureRandom.hex(8)
-            end
+          result = ::CourseServices::CourseCreateService.new(params).execute
+          if result[:errors]
+            error!({ status: 'error', errors: result[:errors] }, 422)
+          else
+            { status: 'success', course: result[:course] }
           end
-
-          { status: 'success', course: course_info }
         end
       end
     end

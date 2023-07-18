@@ -8,7 +8,7 @@ describe 'Courses API', type: :request do
 
     let(:units) do
       2.times.map do |i|
-        { unit_order: i + 1, unit_name: Faker::Lorem.word }
+        { unit_order: i + 1, unit_name: Faker::Lorem.word, unit_content: Faker::Lorem.word }
       end
     end
 
