@@ -21,6 +21,7 @@ gem "redis", "~> 4.0"
 
 # Grape API
 gem "grape"
+gem 'grape-swagger'
 
 gem 'acts_as_list'
 
@@ -51,3 +52,6 @@ group :development, :test do
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
+
+
+gem 'rack-cors'
