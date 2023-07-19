@@ -13,3 +13,6 @@ deploy this project to fly.io
   fly deploy
 ```
 
+## Swagger
+end_point: "/api/v1/swagger_doc"
+
