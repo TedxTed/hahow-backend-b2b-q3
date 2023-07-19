@@ -21,6 +21,9 @@ gem "redis", "~> 4.0"
 
 # Grape API
 gem "grape"
+gem 'grape-swagger'
+
+gem 'acts_as_list'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -43,10 +46,12 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-end
-
-group :development do
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'faker', '~> 3.2'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 gem "dockerfile-rails", ">= 1.5", :group => :development
+
+
+gem 'rack-cors'
