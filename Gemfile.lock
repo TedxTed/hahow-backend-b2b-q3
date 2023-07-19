@@ -113,8 +113,6 @@ GEM
       rack-accept
     grape-swagger (1.6.1)
       grape (~> 1.3)
-    grape-swagger-rails (0.4.0)
-      railties (>= 6.0.6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
@@ -244,7 +242,6 @@ DEPENDENCIES
   faker (~> 3.2)
   grape
   grape-swagger
-  grape-swagger-rails
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
