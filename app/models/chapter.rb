@@ -7,7 +7,7 @@ class Chapter < ApplicationRecord
   validates :chapter_name, presence: true
   validates :identifier, presence: true, uniqueness: true
 
-  has_many :units
+  has_many :units, dependent: :destroy
 
   private
 

@@ -6,7 +6,7 @@ class Course < ApplicationRecord
   validates :course_description, presence: true
   validates :identifier, uniqueness: true
 
-  has_many :chapters
+  has_many :chapters, dependent: :destroy
 
   private
 
