@@ -2,7 +2,7 @@ class Chapter < ApplicationRecord
   belongs_to :course
   acts_as_list scope: :course
 
-  before_validation :set_identifier
+  before_validation :set_identifier, on: :create
 
   validates :chapter_name, presence: true
   validates :identifier, presence: true, uniqueness: true
