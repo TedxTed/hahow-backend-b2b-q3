@@ -8,6 +8,7 @@ module V1
 
     mount V1::Course::CreateCourseApi
     mount V1::Course::UpdateCourseApi
+    mount V1::Course::DeleteCourseApi
     add_swagger_documentation
   end
 end
