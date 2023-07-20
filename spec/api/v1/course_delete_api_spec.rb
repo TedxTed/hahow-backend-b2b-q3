@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'DELETE /api/v1/courses/:id' do
   let(:course) { create(:course) }
   let!(:chapter1) { create(:chapter, course:, position: 1) }
@@ -7,7 +9,7 @@ describe 'DELETE /api/v1/courses/:id' do
   let!(:unit3) { create(:unit, chapter: chapter2, position: 1) }
 
   before do
-    delete "/api/v1/courses/#{course.id}"
+    delete "/api/v1/courses/#{course.identifier}"
   end
 
   it 'deletes the course' do
