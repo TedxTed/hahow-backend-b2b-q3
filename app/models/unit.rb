@@ -2,7 +2,7 @@ class Unit < ApplicationRecord
   belongs_to :chapter
   acts_as_list scope: :chapter
 
-  before_validation :set_identifier
+  before_validation :set_identifier, on: :create
 
   validates :unit_name, presence: true
   validates :unit_content, presence: true
