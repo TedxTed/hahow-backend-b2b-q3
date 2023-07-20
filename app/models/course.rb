@@ -1,5 +1,5 @@
 class Course < ApplicationRecord
-  before_validation :set_identifier
+  before_validation :set_identifier, on: :create
 
   validates :course_name, presence: true
   validates :instructor_name, presence: true
