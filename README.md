@@ -75,3 +75,6 @@ deploy this project to fly.io
 
 [Swagger](https://github.com/TedxTed/hahow-backend-b2b-q3/wiki/Swagger)
 
+## Postman
+[Postman](https://drive.google.com/file/d/1UydxFuKDJeKc5GcnJD7Z7IbAAVSQvh_B/view?usp=sharing)
+
