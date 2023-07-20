@@ -22,7 +22,7 @@ describe 'Courses API', type: :request do
               chapter_name: 'new_chapter_name',
               units: [
                 {
-                  id: unit3.identifier, # 使用單獨的 let 宣告使代碼更具可讀性
+                  id: unit3.identifier,
                   unit_name: 'new_unit_name',
                   unit_description: 'new_description',
                   unit_content: 'new_content',
@@ -56,8 +56,8 @@ describe 'Courses API', type: :request do
         expect(chapter_response.dig('units', 0, 'unit_content')).to eq('new_content')
       end
 
-      it 'returns status code 201' do
-        expect(response).to have_http_status(201)
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
       end
     end
     context 'when the chapter id is invalid' do
@@ -68,7 +68,7 @@ describe 'Courses API', type: :request do
 
       it 'returns an error response' do
         json = JSON.parse(response.body)
-        expect(json['error']).to be_present
+        expect(json['errors']).to be_present
       end
 
       it 'returns status code 422' do
@@ -84,7 +84,7 @@ describe 'Courses API', type: :request do
 
       it 'returns an error response' do
         json = JSON.parse(response.body)
-        expect(json['error']).to be_present
+        expect(json['errors']).to be_present
       end
 
       it 'returns status code 422' do
