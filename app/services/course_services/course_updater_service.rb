@@ -12,10 +12,13 @@ module CourseServices
         update_chapter(course, params[:course][:chapters])
         FullCourseInfoService.new(course.identifier).execute
       end
-    rescue ActiveRecord::RecordNotFound
-      { errors: ['Course not found.'] }
+    rescue ActiveRecord::RecordNotFound => e
+
+      entity, criteria = parse_error_message(e.message)
+      custom_message = "Unable to find #{entity}. Please ensure the details are correct and try again."
+      { errors: [custom_message] }
     rescue StandardError => e
-      { errors: [e.record.errors.full_messages].flatten }
+      { errors: [e.message] }
     end
 
     private
@@ -32,7 +35,8 @@ module CourseServices
 
     def update_chapter(course, chapters_params)
       chapters_params.each do |chapter_param|
-        chapter = course.chapters.find_by(identifier: chapter_param[:id])
+
+        chapter = course.chapters.find_by!(identifier: chapter_param[:id]) if chapter_param[:id]
         if chapter
           attributes_to_update = %i[chapter_name]
           update_attribute = chapter_param.slice(*attributes_to_update)
@@ -55,7 +59,7 @@ module CourseServices
 
     def update_units(chapter, units_params)
       units_params.each do |unit_param|
-        unit = chapter.units.find_by(identifier: unit_param[:id])
+        unit = chapter.units.find_by!(identifier: unit_param[:id]) if unit_param[:id]
         if unit
           attributes_to_update = %i[unit_name unit_description unit_content]
           update_attribute = unit_param.slice(*attributes_to_update.compact)
@@ -76,6 +80,16 @@ module CourseServices
             new_unit.move_to_bottom
           end
         end
+      end
+    end
+
+    def parse_error_message(message)
+      if match_data = message.match(/Couldn't find (\w+) with/)
+        entity = match_data[1]
+        criteria = message.split('[WHERE').last
+        [entity, criteria]
+      else
+        [nil, nil]
       end
     end
   end

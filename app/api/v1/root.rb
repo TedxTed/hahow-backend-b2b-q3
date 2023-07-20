@@ -7,6 +7,7 @@ module V1
     format :json
 
     mount V1::Course::CreateCourseApi
+    mount V1::Course::UpdateCourseApi
     add_swagger_documentation
   end
 end
