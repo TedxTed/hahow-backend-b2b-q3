@@ -13,7 +13,6 @@ module CourseServices
         FullCourseInfoService.new(course.identifier).execute
       end
     rescue ActiveRecord::RecordNotFound => e
-
       entity, criteria = parse_error_message(e.message)
       custom_message = "Unable to find #{entity}. Please ensure the details are correct and try again."
       { errors: [custom_message] }
@@ -35,8 +34,7 @@ module CourseServices
 
     def update_chapter(course, chapters_params)
       chapters_params.each do |chapter_param|
-
-        chapter = course.chapters.find_by!(identifier: chapter_param[:id]) if chapter_param[:id]
+        chapter = course.chapters.find_by!(course_id: course.id, identifier: chapter_param[:id]) if chapter_param[:id]
         if chapter
           attributes_to_update = %i[chapter_name]
           update_attribute = chapter_param.slice(*attributes_to_update)
@@ -59,7 +57,7 @@ module CourseServices
 
     def update_units(chapter, units_params)
       units_params.each do |unit_param|
-        unit = chapter.units.find_by!(identifier: unit_param[:id]) if unit_param[:id]
+        unit = chapter.units.find_by!(chapter_id: chapter.id, identifier: unit_param[:id]) if unit_param[:id]
         if unit
           attributes_to_update = %i[unit_name unit_description unit_content]
           update_attribute = unit_param.slice(*attributes_to_update.compact)
